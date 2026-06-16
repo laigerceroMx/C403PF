@@ -1,0 +1,186 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName:       'Incident',
+                     typeNamePlural: 'Incidents',
+                     title: { type: #STANDARD, value: 'IncidentID' },
+    description: { type: #STANDARD, value: 'Title' } },
+             presentationVariant: [{ sortOrder: [{ by: 'IncidentID',
+                                          direction: #ASC }],
+                              visualizations: [{ type: #AS_LINEITEM }] }] }
+
+annotate view ZC_DT_INCT_MR with
+{
+  @UI.facet: [{ id:            'Incident',
+                purpose:       #STANDARD,
+                type:          #IDENTIFICATION_REFERENCE,
+                label:         'Incident',
+                position:      10 },
+              { id:            'History',
+                purpose:       #STANDARD,
+                type:          #LINEITEM_REFERENCE,
+                label:         'History',
+                position:      20,
+                targetElement: '_History'}]
+
+  @UI.identification: [ { position: 10 },
+   { type: #FOR_ACTION, dataAction: 'changeStatus', label: 'Cambiar Estado' }  ]
+  @UI.lineItem: [ { position: 10 },
+   { type: #FOR_ACTION, dataAction: 'changeStatus', label: 'Cambiar Estado' }  ]
+  @UI.hidden: true
+  IncUUID;
+  @UI.identification: [ {
+    position: 20
+  } ]
+  @UI.lineItem: [ {
+    position: 20,
+    importance: #MEDIUM
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  @EndUserText.label: 'Id Incidente'
+  IncidentID;
+
+  @UI.identification: [ {
+    position: 30,
+    importance: #LOW
+  } ]
+  @UI.lineItem: [ {
+    position: 30
+  } ]
+  @EndUserText.label: 'Title'
+  Title;
+
+  @UI.identification: [ {
+    position: 40
+  } ]
+  @UI.lineItem: [ {
+    position: 40,
+    importance: #LOW
+  } ]
+  @UI.selectionField: [ {
+    position: 40
+  } ]
+  @EndUserText.label: 'Inc. Description'
+  Description;
+
+  @Consumption.valueHelpDefinition: [ {
+    entity.name: 'zdd_status_vh_mr',
+    entity.element: 'StatusCode',
+    useForValidation: true
+  } ]
+  @UI.identification: [ {
+    position: 50
+  } ]
+  @UI.lineItem: [ {
+    position: 50,
+    importance: #LOW
+  } ]
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  @EndUserText.label: 'Inc. Status'
+  Status;
+
+  @Consumption.valueHelpDefinition: [ {
+    entity.name: 'zdd_priority_vh_mr',
+    entity.element: 'PriorityCode',
+    useForValidation: true
+  } ]
+  @UI.identification: [ {
+    position: 60
+  } ]
+  @UI.lineItem: [ {
+    position: 60,
+    importance: #LOW
+  } ]
+  @UI.selectionField: [ {
+    position: 60
+  } ]
+  @EndUserText.label: 'Inc. Priority'
+  Priority;
+
+  @UI.identification: [ {
+    position: 65
+  } ]
+  @UI.lineItem: [ {
+    position: 65,
+    importance: #LOW
+  } ]
+  @UI.selectionField: [ {
+    position: 65
+  } ]
+  @EndUserText.label: 'Resp. User'
+  RespUser;
+
+  @EndUserText.label: 'Created Date'
+  @UI.identification: [ {
+    position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 70 ,
+    importance: #LOW
+  } ]
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  CreationDate;
+
+  @EndUserText.label: 'Changed Date'
+  @UI.identification: [ {
+    position: 80
+  } ]
+  @UI.lineItem: [ {
+    position: 80 ,
+    importance: #LOW
+  } ]
+  ChangedDate;
+
+  @UI.identification: [ {
+    position: 90
+  } ]
+  @UI.lineItem: [ {
+    position: 90,
+    importance: #LOW
+  } ]
+  LocalCreatedBy;
+
+  @UI.identification: [ {
+    position: 100
+  } ]
+  @UI.lineItem: [ {
+    position: 100,
+    importance: #LOW
+  } ]
+  LocalCreatedAt;
+
+  @UI.identification: [ {
+    position: 110
+  } ]
+  @UI.lineItem: [ {
+    position: 110,
+    importance: #LOW
+  } ]
+  LocalLastChangedBy;
+
+  @UI.identification: [ {
+    position: 120
+  } ]
+  @UI.lineItem: [ {
+    position: 120,
+    importance: #LOW
+  } ]
+  LocalLastChangedAt;
+
+  @UI.identification: [ {
+    position: 130
+  } ]
+  @UI.lineItem: [ {
+    position: 130,
+    importance: #LOW
+  } ]
+  LastChangedAt;
+
+  @UI.hidden: true
+  _History;
+
+}

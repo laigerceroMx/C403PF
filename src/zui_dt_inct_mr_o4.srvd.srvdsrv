@@ -1,0 +1,15 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_DT_INCT_MR'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_DT_INCT_MR'
+  }
+}
+define service ZUI_DT_INCT_MR_O4
+  provider contracts odata_v4_ui {
+  expose ZC_DT_INCT_MR      as Incident;
+  expose ZC_DT_INCT_H_MR    as History;
+  expose ZDD_STATUS_VH_MR   as Status;
+  expose ZDD_priority_vh_mr as Priority;
+}
